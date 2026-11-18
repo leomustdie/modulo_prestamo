@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Préstamo de Equipos - Laboratorio IT</title>
+</head>
+<body>
+    <h1>Módulo de Préstamo de Equipos</h1>
+    <hr>
+
+    <form method="POST">
+        <label>Nombre del estudiante:</label><br>
+        <input type="text" name="nombre" required><br><br>
+
+        <label>Tipo de equipo solicitado:</label><br>
+        <select name="equipo" required>
+            <option value="Router Cisco">Router Cisco</option>
+            <option value="Laptop de Pruebas">Laptop de Pruebas</option>
+            <option value="Multímetro Digital">Multímetro Digital</option>
+        </select><br><br>
+
+        <label>¿Tiene adeudos previos?</label><br>
+        <select name="adeudos" required>
+            <option value="No">No</option>
+            <option value="Sí">Sí</option>
+        </select><br><br>
+
+        <label>Semestre que cursa:</label><br>
+        <input type="number" name="semestre" min="1" max="12" required><br><br>
+
+        <button type="submit">Solicitar Préstamo</button>
+    </form>
+
+    {% if error %}
+        <div style="color: red; margin-top: 20px;">
+            <h3>Solicitud Rechazada</h3>
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+
+    {% if resultado %}
+        <div style="color: green; margin-top: 20px;">
+            <h3>Préstamo Aprobado</h3>
+            <p><strong>Folio de Autorización:</strong> {{ resultado.folio }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
